@@ -1,0 +1,741 @@
+
+# aProtect the .htaccess
+<files .htaccess="">
+order allow,deny
+deny from all
+</files>
+
+
+RewriteEngine On
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+#error
+RewriteRule ^warning-([error]+)$ error.php [L]
+
+#IP SISTEM
+RewriteRule ^parastapainnovationip-([Key]+)$ ip/000_ip.php [L]
+#Login SISTEM
+RewriteRule ^parastapainnovation-([login]+)$ main/login/001_login.php [L]
+## USER
+#getalluser
+RewriteRule ^parastapainnovation-([GetAllUser]+)$ main/user/000_getuser.php [L]
+#level
+RewriteRule ^parastapainnovation-([GetAllLevel]+)$ main/user/000a_getuserlevel.php [L]
+#getuser
+RewriteRule ^parastapainnovationUser-([GetUser]+)$ main/user/001_getuserbyid.php [L]
+#getuserbyid
+RewriteRule ^parastapainnovationuserNonMD5-([GetUser]+)$ main/user/001a_getuserbyIDNormal.php [L]
+#getusername
+RewriteRule ^parastapainnovation-([GetDataUserName]+)$ main/user/003_getusernamebyid.php [L]
+#ubahuser
+RewriteRule ^parastapainnovation-([ChangeUserPassword]+)$ main/user/002_UpdateUserById.php [L]
+#Gambar user
+RewriteRule ^view_parastapainnovation-([GambarUser]+)$ uploadedfile/filenya_user/index.php [L]
+#Tambah user
+RewriteRule ^parastapainnovationuser-([AddUser]+)$ main/user/004_AddUser.php [L]
+#Edit user
+RewriteRule ^parastapainnovationuser-([EditUser]+)$ main/user/005_EditUser.php [L]
+#delete user
+RewriteRule ^parastapainnovationuser-([DeleteUser]+)$ main/user/000b_DeleteUserData.php [L]
+#Reffuser
+RewriteRule ^parastapainnovation-([ReffUser]+)$ main/user/006_RefUser.php [L]
+
+##### FILE #####
+#UPLOAD FILE
+RewriteRule ^parastapainnovationpeta-([FilesUpload]+)$ main/FilesUpload/001_Upload.php [L]
+#DELETED FILE
+RewriteRule ^parastapainnovationpeta-([FilesDeleted]+)$ main/FilesUpload/002_Delete.php [L]
+
+#Web GIS Simfast
+#getLayer
+RewriteRule ^maps_parastapainnovation-([LayerPeta]+)$ webgis/001_getdatalayers.php [L]
+#point emon
+RewriteRule ^maps_titik_emon-([TitikEmon]+)$ webgis/lokasiemon/001_lokasi_emon.php [L]
+#point pk
+RewriteRule ^maps_titik_pk-([TitikPK]+)$ webgis/lokasipk/001_lokasi_pk.php [L]
+#view data geojson
+RewriteRule ^maps_parastapainnovation-([ViewGeojson]+)$ uploadedfile/filenya_peta/index.php [L]
+#Gambar Point
+RewriteRule ^maps_parastapainnovation-([Ikon]+)$ uploadedfile/filenya_ikon/index.php [L]
+#Gambar Foto
+RewriteRule ^maps_parastapainnovation_foto-([Foto]+)$ uploadedfile/filenya_foto/index.php [L]
+
+
+#Legenda Web GIS Simfast
+#getlegenda
+RewriteRule ^maps_legend-([ShowLegenda]+)$ legendapeta/001_getdatalegendalayers.php [L]
+
+#Pengumuman
+#get
+RewriteRule ^parastapainnovationpengumuman-([Semua]+)$ main/pengumuman/000_get_pengumuman_all.php [L]
+#get
+RewriteRule ^parastapainnovationpengumuman-([GetData]+)$ main/pengumuman/001_get_pengumuman.php [L]
+#getbyID
+RewriteRule ^parastapainnovationpengumuman-([GetByID]+)$ main/pengumuman/002_get_pengumumanByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationpengumuman-([Add]+)$ main/pengumuman/003_Addpengumuman.php [L]
+#Update
+RewriteRule ^parastapainnovationpengumuman-([Update]+)$ main/pengumuman/004_Updatepengumuman.php [L]
+#Delete
+RewriteRule ^parastapainnovationpengumuman-([Delete]+)$ main/pengumuman/005_Deletepengumuman.php [L]
+
+#IKU
+#get
+RewriteRule ^parastapainnovationiku-([GetData]+)$ main/iku/001_get_iku.php [L]
+#getbyID
+RewriteRule ^parastapainnovationiku-([GetByID]+)$ main/iku/002_get_ikuByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationiku-([Add]+)$ main/iku/003_Addiku.php [L]
+#Update
+RewriteRule ^parastapainnovationiku-([Update]+)$ main/iku/004_Updateiku.php [L]
+#Delete
+RewriteRule ^parastapainnovationiku-([Delete]+)$ main/iku/005_Deleteiku.php [L]
+
+#Unor
+#get
+RewriteRule ^parastapainnovationunor-([GetData]+)$ main/unor/001_get_unor.php [L]
+#getbyID
+RewriteRule ^parastapainnovationunor-([GetByID]+)$ main/unor/002_get_unorByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationunor-([Add]+)$ main/unor/003_Addunor.php [L]
+#Update
+RewriteRule ^parastapainnovationunor-([Update]+)$ main/unor/004_Updateunor.php [L]
+#Delete
+RewriteRule ^parastapainnovationunor-([Delete]+)$ main/unor/005_Deleteunor.php [L]
+
+#Kategori satker
+#get
+RewriteRule ^parastapainnovationkategorisatker-([GetData]+)$ main/kategori_satker/001_get_kategori_satker.php [L]
+#getbyID
+RewriteRule ^parastapainnovationkategorisatker-([GetByID]+)$ main/kategori_satker/002_get_kategori_satkerByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationkategorisatker-([Add]+)$ main/kategori_satker/003_Addkategori_satker.php [L]
+#Update
+RewriteRule ^parastapainnovationkategorisatker-([Update]+)$ main/kategori_satker/004_Updatekategori_satker.php [L]
+#Delete
+RewriteRule ^parastapainnovationkategorisatker-([Delete]+)$ main/kategori_satker/005_Deletekategori_satker.php [L]
+
+#Satker
+#get all
+RewriteRule ^parastapainnovationsatker-([GetAll]+)$ main/satker/000_get_satker_all.php [L]
+#get all filter
+RewriteRule ^parastapainnovationsatker-([NonDirjen]+)$ main/satker/000a_get_satker_all_tanpa03.php [L]
+#get
+RewriteRule ^parastapainnovationsatker-([GetData]+)$ main/satker/001_get_satker.php [L]
+#getbyID
+RewriteRule ^parastapainnovationsatker-([GetByID]+)$ main/satker/002_get_satkerByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationsatker-([Add]+)$ main/satker/003_Add_satker.php [L]
+#Update
+RewriteRule ^parastapainnovationsatker-([Update]+)$ main/satker/004_Update_satker.php [L]
+#Delete
+RewriteRule ^parastapainnovationsatker-([Delete]+)$ main/satker/005_Delete_satker.php [L]
+
+#Pengaturan PK
+#get
+RewriteRule ^parastapainnovationatur-([PK]+)$ main/pengaturanpk/000_get_pengaturanpk.php [L]
+#Update
+RewriteRule ^parastapainnovationatur-([Update]+)$ main/pengaturanpk/001_Update_pengaturanpk.php [L]
+
+#Reset PK
+#get
+RewriteRule ^parastapainnovationreset-([PK]+)$ main/resetpk/001_get_verifpk.php [L]
+#Update
+RewriteRule ^parastapainnovationreset-([Delete]+)$ main/resetpk/002_Delete_verif.php [L]
+
+#REFF
+#Default Tahun
+RewriteRule ^parastapainnovationreff-([DefaultTahun]+)$ reff/000_defaulttahun.php [L]
+#Renstra Tahun
+RewriteRule ^parastapainnovationreff-([RenstraTahun]+)$ reff/000_range_tahun_renstra.php [L]
+#Unor
+RewriteRule ^parastapainnovationreff-([GetUnor]+)$ reff/000_unor.php [L]
+#kategori Satker
+RewriteRule ^parastapainnovationreff-([GetKategoriSatker]+)$ reff/001_kategori_satker.php [L]
+#Satker
+RewriteRule ^parastapainnovationreff-([GetMasterSatker]+)$ reff/002_satker.php [L]
+#Satuan
+RewriteRule ^parastapainnovationreff-([GetSatuan]+)$ reff/003_satuan.php [L]
+#Status PIU
+RewriteRule ^parastapainnovationreff-([GetStatusPIU]+)$ reff/004_status_piu.php [L]
+#Level PIU
+RewriteRule ^parastapainnovationreff-([GetLevelPIU]+)$ reff/005_level_piu.php [L]
+#Nilai
+RewriteRule ^parastapainnovationreff-([GetNilai]+)$ reff/006_nilai.php [L]
+##Status Tampil
+RewriteRule ^parastapainnovationreff-([GetStatusTampil]+)$ reff/007_status_tampil.php [L]
+#Satker Evaluasi Pusat
+RewriteRule ^parastapainnovationreff-([GetMasterSatkerEvaluasiPusat]+)$ reff/008_satker_evaluasi_pusat.php [L]
+#Verifikasi
+RewriteRule ^parastapainnovationreff-([GetVerifikasi]+)$ reff/009_verifikasi.php [L]
+#Jumlah Verifikasi
+RewriteRule ^parastapainnovationreff-([GetMasterJumlahVerifikasi]+)$ reff/010_jumlahverifikasi.php [L]
+#Kegiatan
+RewriteRule ^parastapainnovationreff-([GetKegiatan]+)$ reff/011_kegiatan.php [L]
+#Klasifikasi Rincian Output
+RewriteRule ^parastapainnovationreff-([GetKlasifikasiRincianOutput]+)$ reff/012_klasifikasi_rincian_output.php [L]
+#Rincian Output
+RewriteRule ^parastapainnovationreff-([DataRincianOutput]+)$ reff/013_rincian_output.php [L]
+#JenisPK
+RewriteRule ^parastapainnovationjenispk-([JenisPK]+)$ reff/014_jenis_pk.php [L]
+#IKU
+RewriteRule ^parastapainnovationIKU-([IKU]+)$ reff/015_iku.php [L]
+#kategori Satker Capaian
+RewriteRule ^parastapainnovationCapaianReff-([KategoriSatker]+)$ reff/016_kategori_satkercapaian.php [L]
+#Pilihan Tahun
+RewriteRule ^pilihantahun-([Tahun]+)$ reff/017_tahun.php [L]
+
+
+## Master Komponen LKE
+#getall
+RewriteRule ^masterlke-([GetAllKomponen]+)$ main/lke/komponen/000_getkomponen.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddKomponen]+)$ main/lke/komponen/001_AddKomponen.php [L]
+#edit
+RewriteRule ^masterlke-([EditKomponen]+)$ main/lke/komponen/002_EditKomponen.php [L]
+#Update
+RewriteRule ^masterlke-([UpdateKomponen]+)$ main/lke/komponen/003_UpdateKomponen.php [L]
+#delete
+RewriteRule ^masterlke-([DeleteKomponen]+)$ main/lke/komponen/004_DeleteKomponen.php [L]
+#RefKomponen
+RewriteRule ^masterlke-([ReffKomponen]+)$ main/lke/komponen/005_RefKomponen.php [L]
+
+## Master SubKomponen LKE
+#getall
+RewriteRule ^masterlke-([GetAllSubKomponen]+)$ main/lke/subkomponen/000_getsubkomponen.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddSubKomponen]+)$ main/lke/subkomponen/001_AddSubKomponen.php [L]
+#edit
+RewriteRule ^masterlke-([EditSubKomponen]+)$ main/lke/subkomponen/002_EditSubKomponen.php [L]
+#Update
+RewriteRule ^masterlke-([UpdateSubKomponen]+)$ main/lke/subkomponen/003_UpdateSubKomponen.php [L]
+#delete
+RewriteRule ^masterlke-([DeleteSubKomponen]+)$ main/lke/subkomponen/004_DeleteSubKomponen.php [L]
+#RefSubKomponen
+RewriteRule ^masterlke-([ReffSubKomponen]+)$ main/lke/subkomponen/005_RefSubKomponen.php [L]
+
+## Master Kriteria LKE
+#getall
+RewriteRule ^masterlke-([GetAllKriteria]+)$ main/lke/kriteria/000_getkriteria.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddKriteria]+)$ main/lke/kriteria/001_Addkriteria.php [L]
+#edit
+RewriteRule ^masterlke-([EditKriteria]+)$ main/lke/kriteria/002_Editkriteria.php [L]
+#Update
+RewriteRule ^masterlke-([UpdateKriteria]+)$ main/lke/kriteria/003_Updatekriteria.php [L]
+#delete
+RewriteRule ^masterlke-([DeleteKriteria]+)$ main/lke/kriteria/004_Deletekriteria.php [L]
+#Refkriteria
+RewriteRule ^masterlke-([ReffKriteria]+)$ main/lke/kriteria/005_Refkriteria.php [L]
+
+## Master Pilihan Jawaban LKE
+#getall
+RewriteRule ^masterlke-([GetAllPilihanJawaban]+)$ main/lke/pilihanjawaban/000_getpilihanjawaban.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddPilihanJawaban]+)$ main/lke/pilihanjawaban/001_Addpilihanjawaban.php [L]
+#edit
+RewriteRule ^masterlke-([EditPilihanJawaban]+)$ main/lke/pilihanjawaban/002_Editpilihanjawaban.php [L]
+#Update
+RewriteRule ^masterlke-([UpdatePilihanJawaban]+)$ main/lke/pilihanjawaban/003_Updatepilihanjawaban.php [L]
+#delete
+RewriteRule ^masterlke-([DeletePilihanJawaban]+)$ main/lke/pilihanjawaban/004_Deletepilihanjawaban.php [L]
+#RefPilihanJawaban
+RewriteRule ^masterlke-([ReffPilihanJawaban]+)$ main/lke/pilihanjawaban/005_Refpilihanjawaban.php [L]
+
+## Master Evaluator LKE
+#getall
+RewriteRule ^masterlke-([GetAllEvaluator]+)$ main/lke/evaluator/000_getevaluator.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddEvaluator]+)$ main/lke/evaluator/001_Addevaluator.php [L]
+#edit
+RewriteRule ^masterlke-([EditEvaluator]+)$ main/lke/evaluator/002_Editevaluator.php [L]
+#Update
+RewriteRule ^masterlke-([UpdateEvaluator]+)$ main/lke/evaluator/003_Updateevaluator.php [L]
+#delete
+RewriteRule ^masterlke-([DeleteEvaluator]+)$ main/lke/evaluator/004_Deleteevaluator.php [L]
+
+## Evaluatan LKE
+#getall
+RewriteRule ^masterlke-([GetAllEvaluatan]+)$ main/lke/evaluatan/000_getevaluatan.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddEvaluatan]+)$ main/lke/evaluatan/001_Addevaluatan.php [L]
+#edit
+RewriteRule ^masterlke-([EditEvaluatan]+)$ main/lke/evaluatan/002_Editevaluatan.php [L]
+#Update
+RewriteRule ^masterlke-([UpdateEvaluatan]+)$ main/lke/evaluatan/003_Updateevaluatan.php [L]
+#delete
+RewriteRule ^masterlke-([DeleteEvaluatan]+)$ main/lke/evaluatan/004_Deleteevaluatan.php [L]
+
+## Penilaian LKE
+#getall
+RewriteRule ^masterlke-([GetAllPenilaianLKE]+)$ main/lke/penilaian_lke/000_getPenilaianLKE.php [L]
+#getallPenilaianLKEPusat
+RewriteRule ^masterlke-([GetAllPenilaianLKEPusat]+)$ main/lke/penilaian_lke/009_getPenilaianLKEPusat.php [L]
+#Upload Dokumen
+RewriteRule ^masterlke-([FileUserLKE]+)$ backoffice/upload/pic/dokumen.php [L]
+RewriteRule ^parastapainnovation_dokumen-([File]+)$ backoffice/upload/pic/dokumen.php [L]
+#Preview
+RewriteRule ^masterlke-([PreviewFileUserLKE]+)$ backoffice/upload/pic/preview.php [L]
+#tambbah
+RewriteRule ^masterlke-([AddPenilaianLKE]+)$ main/lke/penilaian_lke/001_UploadDokSatkerLKE.php [L]
+RewriteRule ^masterlke-([nilaiIndikatorLKEPusat]+)$ main/lke/penilaian_lke/023_nilaiIndikatorLKE.php [L]
+#EditBuktiDukung
+RewriteRule ^masterlke-([EditBuktiDukungLKE]+)$ main/lke/penilaian_lke/021_EditBuktiDukungLKE.php [L]
+#edit
+RewriteRule ^masterlke-([EvaluasiLKE]+)$ main/lke/penilaian_lke/002_UpdateLKE.php [L]
+#getKriteriaLKEbyID
+RewriteRule ^masterlke-([getKriteriaLKEbyID]+)$ main/lke/penilaian_lke/003_GetKriteriaByIDLKE.php [L]
+#UpdateTanggapanSatker
+RewriteRule ^masterlke-([UpdateTanggapanSatker]+)$ main/lke/penilaian_lke/004_UpdateTanggapanSatker.php [L]
+#UpdateStatusPerbaikan
+RewriteRule ^masterlke-([UpdateStatusPerbaikan]+)$ main/lke/penilaian_lke/005_UpdateStatusPerbaikan.php [L]
+#ExportWordLHE
+RewriteRule ^penilaianlke-([ExportWordLHE]+)$ main/lke/penilaian_lke/006_exportWordLHE.php [L]
+#ExportWordBA
+RewriteRule ^penilaianlke-([ExportWordBA]+)$ main/lke/penilaian_lke/007_exportWordBA.php [L]
+#editTanggalEvaluasi
+RewriteRule ^masterlke-([UbahBatasEvaluasi]+)$ main/lke/penilaian_lke/008_UbahBatasEvaluasi.php [L]
+#ExportExcelLKE
+RewriteRule ^penilaianlke-([ExportExcelLKE]+)$ main/lke/penilaian_lke/010_exportExcelLKE.php [L]
+
+#ExportWordLHEPusat
+RewriteRule ^penilaianlke-([ExportWordLHEPusat]+)$ main/lke/penilaian_lke/011_exportWordLHEPusat.php [L]
+#ExportWordBAPusat
+RewriteRule ^penilaianlke-([ExportWordBAPusat]+)$ main/lke/penilaian_lke/012_exportWordBAPusat.php [L]
+#ExportExcelLKEPusat
+RewriteRule ^penilaianlke-([ExportExcelLKEPusat]+)$ main/lke/penilaian_lke/013_exportExcelLKEPusat.php [L]
+
+#get ttd LKE
+RewriteRule ^penilaianlke-([GetTTDLKE]+)$ main/lke/penilaian_lke/014_get_ttd_lke.php [L]
+#update ttd LKE
+RewriteRule ^penilaianlke-([SimpanTTDLKE]+)$ main/lke/penilaian_lke/015_simpan_update_ttd_lke.php [L]
+
+#MonitoringLKE
+RewriteRule ^penilaianlke-([GetMonitoringLKE]+)$ main/lke/penilaian_lke/016_get_monitoring_lke.php [L]
+
+#SummaryPenilaianLKE
+RewriteRule ^penilaianlke-([GetSummaryPenilaianLKE]+)$ main/lke/penilaian_lke/017_get_summary_penilaian_lke.php [L]
+RewriteRule ^penilaianlke-([GetSummaryPenilaianLKEPusat]+)$ main/lke/penilaian_lke/018_get_summary_penilaian_lke_pusat.php [L]
+
+#ResetDataBUktiDukungLKE
+RewriteRule ^penilaianlke-([ResetDataBUktiDukungLKE]+)$ main/lke/penilaian_lke/019_DeleteBuktiDukung.php [L]
+RewriteRule ^penilaianlke-([ResetDataBUktiDukungTanggapanLKE]+)$ main/lke/penilaian_lke/020_DeleteBuktiDukungTanggapanSatker.php [L]
+
+#ResetPenilaianLKE
+RewriteRule ^penilaianlke-([ResetPenilaianLKE]+)$ main/lke/penilaian_lke/022_ResetPenilaianLKE.php [L]
+
+#UPLOAD FILE
+RewriteRule ^parastapainnovationimg-([FilesUpload]+)$ modulfilepic/FilesUpload/001_Upload.php [L]
+#DELETED FILE
+RewriteRule ^parastapainnovationimg-([FilesDeleted]+)$ modulfilepic/FilesUpload/002_Delete.php [L]
+
+#UPLOAD FILE 2
+RewriteRule ^parastapainnovationimg2-([FilesUpload]+)$ modulfilepic/FilesUpload2/001_Upload.php [L]
+#DELETED FILE 2
+RewriteRule ^parastapainnovationimg2-([FilesDeleted]+)$ modulfilepic/FilesUpload2/002_Delete.php [L]
+
+#Satuan
+#get
+RewriteRule ^parastapainnovationsatuan-([GetData]+)$ main/satuan/001_get_satuan.php [L]
+#getbyID
+RewriteRule ^parastapainnovationsatuan-([GetByID]+)$ main/satuan/002_get_satuanByID.php [L]
+#Tambah
+RewriteRule ^parastapainnovationsatuan-([Add]+)$ main/satuan/003_Add_satuan.php [L]
+#Update
+RewriteRule ^parastapainnovationsatuan-([Update]+)$ main/satuan/004_Update_satuan.php [L]
+#Delete
+RewriteRule ^parastapainnovationsatuan-([Delete]+)$ main/satuan/005_Delete_satuan.php [L]
+
+#Indikator
+#get
+RewriteRule ^indikator-([GetData]+)$ main/indikator/001_get_indikator.php [L]
+#Tambah
+RewriteRule ^indikator-([Add]+)$ main/indikator/002_Add_indikator.php [L]
+#Delete
+RewriteRule ^indikator-([Delete]+)$ main/indikator/003_Delete_indikator.php [L]
+#Aktif Non Aktif
+RewriteRule ^indikator-([SetActive]+)$ main/indikator/004_Update_indikator.php [L]
+
+
+#Indikator Awal
+#get
+RewriteRule ^indikatorAwal-([GetData]+)$ main/indikatorawal/001_get_indikator.php [L]
+#Tambah
+RewriteRule ^indikatorAwal-([Add]+)$ main/indikatorawal/002_Add_indikator.php [L]
+#Delete
+RewriteRule ^indikatorAwal-([Delete]+)$ main/indikatorawal/003_Delete_indikator.php [L]
+#Aktif Non Aktif
+RewriteRule ^indikatorAwal-([SetActive]+)$ main/indikatorawal/004_Update_indikator.php [L]
+
+#Indikator Akhir
+#get
+RewriteRule ^indikatorAkhir-([GetData]+)$ main/indikatorakhir/001_get_indikator.php [L]
+#Tambah
+RewriteRule ^indikatorAkhir-([Add]+)$ main/indikatorakhir/002_Add_indikator.php [L]
+#Delete
+RewriteRule ^indikatorAkhir-([Delete]+)$ main/indikatorakhir/003_Delete_indikator.php [L]
+#Aktif Non Aktif
+RewriteRule ^indikatorAkhir-([SetActive]+)$ main/indikatorakhir/004_Update_indikator.php [L]
+
+#Resume PK Awal
+#get
+RewriteRule ^DataAkhirPKAwal-([Target]+)$ main/resumepkawal/001_get_dataindikator.php [L]
+#excel resume balai
+RewriteRule ^EksportExcelPKAwal-([Balai]+)$ main/resumepkawal/002exportExcelResumeBalai.php [L]
+#get satker
+RewriteRule ^DataAkhirPKAwal-([Satker]+)$ main/resumepkawal/003_get_dataindikatorsatker.php [L]
+#excel resume satker
+RewriteRule ^EksportExcelPKAwal-([Satker]+)$ main/resumepkawal/004exportExcelResumeSatker.php [L]
+#get detail hitungan 2
+RewriteRule ^DetailDataAkhirPKAwal-([HitunganSubKomponen]+)$ main/resumepkawal/005_get_detailindikatorsatker2.php [L]
+#excel detail satker 2
+RewriteRule ^EksportExcelPKAwal-([Detail2]+)$ main/resumepkawal/006exportExcelDetailSatker2.php [L]
+#get detail hitungan 1
+RewriteRule ^DetailDataAkhirPKAwal-([HitunganTarget]+)$ main/resumepkawal/007_get_detailindikatorsatker1.php [L]
+#excel detail satker 1
+RewriteRule ^EksportExcelPKAwal-([Hitungan]+)$ main/resumepkawal/008exportExcelDetailSatker1.php [L]
+
+#get indikator hitungan 2
+RewriteRule ^DetailIndikatorPKAwal-([HitunganSubKomponen]+)$ main/resumepkawal/009_get_detailsatker2.php [L]
+#excel indikator hitungan 2
+RewriteRule ^EksportExcelIndikatorPKAwal-([Detail2]+)$ main/resumepkawal/010exportExcelIndikatorSatker2.php [L]
+#get indikator hitungan 1
+RewriteRule ^DetailIndikatorPKAwal-([HitunganTarget]+)$ main/resumepkawal/011_get_detailsatker1.php [L]
+#excel indikator satker 1
+RewriteRule ^EksportExcelIndikatorPKAwal-([Hitungan]+)$ main/resumepkawal/012exportExcelIndikatorSatker1.php [L]
+#Resume PK Awal
+
+#Resume Capaian
+#get
+RewriteRule ^Resume-([Capaian]+)$ main/resume/001_get_dataindikator.php [L]
+#excel resume balai
+RewriteRule ^EksportExcel-([Balai]+)$ main/resume/002exportExcelResumeBalai.php [L]
+#get satker
+RewriteRule ^Resume-([Satker]+)$ main/resume/003_get_dataindikatorsatker.php [L]
+#excel resume satker
+RewriteRule ^EksportExcel-([Satker]+)$ main/resume/004exportExcelResumeSatker.php [L]
+#get detail hitungan 2
+RewriteRule ^DetailResume-([HitunganSubKomponen]+)$ main/resume/005_get_detailindikatorsatker2.php [L]
+#excel detail satker 2
+RewriteRule ^EksportExcel-([Detail2]+)$ main/resume/006exportExcelDetailSatker2.php [L]
+#get detail hitungan 1
+RewriteRule ^DetailResume-([HitunganTarget]+)$ main/resume/007_get_detailindikatorsatker1.php [L]
+#excel detail satker 1
+RewriteRule ^EksportExcel-([Hitungan]+)$ main/resume/008exportExcelDetailSatker1.php [L]
+#get indikator hitungan 2
+RewriteRule ^DetailIndikator-([HitunganSubKomponen]+)$ main/resume/009_get_detailsatker2.php [L]
+#excel indikator hitungan 2
+RewriteRule ^EksportExcelIndikator-([Detail2]+)$ main/resume/010exportExcelIndikatorSatker2.php [L]
+#get indikator hitungan 1
+RewriteRule ^DetailIndikator-([HitunganTarget]+)$ main/resume/011_get_detailsatker1.php [L]
+#excel indikator satker 1
+RewriteRule ^EksportExcelIndikator-([Hitungan]+)$ main/resume/012exportExcelIndikatorSatker1.php [L]
+
+#Emon
+#get
+RewriteRule ^emon-([GetData]+)$ main/dbemon/001_get_db_emon.php [L]
+#View Database SQlite
+RewriteRule ^emon-([ShowTabel]+)$ uploadedfile/filenya_emon/001_readsqlite_emon.php [L]
+#Tambah
+RewriteRule ^emon-([Add]+)$ main/dbemon/002_Adddb_emon.php [L]
+#Create table
+RewriteRule ^emon-([CreateTable]+)$ main/dbemon/003_CreateTable_emon.php [L]
+#Delete table
+RewriteRule ^emon-([DeleteTable]+)$ main/dbemon/004_DeleteTable_emon.php [L]
+#View Table SQlite
+RewriteRule ^emon-([GetTable]+)$ uploadedfile/filenya_emon/002_readinserttablesqlite_emon.php [L]
+#Backup
+RewriteRule ^emon-([Backup]+)$ main/dbemon/005_Backupdb_emon.php [L]
+
+#File Db Emon
+RewriteRule ^view_emon-([Data]+)$ uploadedfile/filenya_emon/index.php [L]
+
+#SHORTCUT PK
+RewriteRule ^shortcutpksatker-([Update]+)$ main/shortcutpk/001_shortcutpksatker.php [L]
+RewriteRule ^shortcutpkbalai-([Update]+)$ main/shortcutpk/002_shortcutpkbalai.php [L]
+#SHORTCUT PK
+
+#file ttd
+RewriteRule ^ttdpk-([Gambar]+)$ uploadedfile/filenya_ttd/index.php [L]
+
+#PK Satker AWAL
+#get
+RewriteRule ^pksatkerawal-([GetData]+)$ main/pksatkerawal/001_get_pksatker.php [L]
+#get
+RewriteRule ^pksatkerawal-([GetBaseline]+)$ main/pksatkerawal/002_get_data_pksatker.php [L]
+#update
+RewriteRule ^pksatkerawal-([Update]+)$ main/pksatkerawal/003_Update_pksatker.php [L]
+#get emon
+RewriteRule ^pksatkerawal-([GetEmon]+)$ main/pksatkerawal/004_get_data_emon.php [L]
+#tagging emon
+RewriteRule ^pksatkerawal-([TaggingEmon]+)$ main/pksatkerawal/005_TaggingEmon.php [L]
+#delete tagging emon
+RewriteRule ^pksatkerawal-([DeleteTagging]+)$ main/pksatkerawal/007_Delete_tanggingemon.php [L]
+#delete tagging emon multi
+RewriteRule ^pksatkerawal-([HapusMultiTagging]+)$ main/pksatkerawal/007a_Delete_multitagemon.php [L]
+#update lokasi lat long tagging emon
+RewriteRule ^pksatkerawal-([LatLongUpdate]+)$ main/pksatkerawal/008_UpdateLatLongEmon.php [L]
+#update lokasi lat long tagging emon Persen
+RewriteRule ^pksatkerawalpersen-([LatLongUpdate]+)$ main/pksatkerawal/008a_UpdateLatLongEmon.php [L]
+
+#get ttd
+RewriteRule ^pksatkerawal-([GetTTD]+)$ main/pksatkerawal/009_get_ttd.php [L]
+#update ttd
+RewriteRule ^pksatkerawal-([SimpanTTD]+)$ main/pksatkerawal/010_UpdateTTD.php [L]
+#cetak hasil satker
+RewriteRule ^pksatkerawal-([cetakPK]+)$ pdf/main/cetakpkawal.php [L]
+#get verif
+RewriteRule ^pksatkerawal-([DataVerif]+)$ main/pksatkerawal/011_get_data_verif.php [L]
+#update verif
+RewriteRule ^pksatkerawal-([VerifUpdate]+)$ main/pksatkerawal/012_UpdateVerifikasi.php [L]
+#ajukan verif
+RewriteRule ^pksatkerawal-([AjukanVerif]+)$ main/pksatkerawal/013_AjukanVerifikasi.php [L]
+#ajukan verif ke irwa
+RewriteRule ^pksatkerawal-([AjukanKeIrwaVerif]+)$ main/pksatkerawal/014_AjukanVerifikasikeIrwa.php [L]
+#ajukan verif ke supan
+RewriteRule ^pksatkerawal-([AjukanKeSupanVerif]+)$ main/pksatkerawal/015_AjukanVerifikasikeSupan.php [L]
+#PK Satker AWAL END
+
+#PK Satker
+#get
+RewriteRule ^pksatker-([GetData]+)$ main/pksatker/001_get_pksatker.php [L]
+#get
+RewriteRule ^pksatker-([GetBaseline]+)$ main/pksatker/002_get_data_pksatker.php [L]
+#update
+RewriteRule ^pksatker-([Update]+)$ main/pksatker/003_Update_pksatker.php [L]
+#get emon
+RewriteRule ^pksatker-([GetEmon]+)$ main/pksatker/004_get_data_emon.php [L]
+#tagging emon
+RewriteRule ^pksatker-([TaggingEmon]+)$ main/pksatker/005_TaggingEmon.php [L]
+#delete tagging emon
+RewriteRule ^pksatker-([DeleteTagging]+)$ main/pksatker/007_Delete_tanggingemon.php [L]
+#delete tagging emon multi
+RewriteRule ^pksatker-([HapusMultiTagging]+)$ main/pksatker/007a_Delete_multitagemon.php [L]
+#update lokasi lat long tagging emon
+RewriteRule ^pksatker-([LatLongUpdate]+)$ main/pksatker/008_UpdateLatLongEmon.php [L]
+#update lokasi lat long tagging emon Persen
+RewriteRule ^pksatkerpersen-([LatLongUpdate]+)$ main/pksatker/008a_UpdateLatLongEmon.php [L]
+
+#get ttd
+RewriteRule ^pksatker-([GetTTD]+)$ main/pksatker/009_get_ttd.php [L]
+#update ttd
+RewriteRule ^pksatker-([SimpanTTD]+)$ main/pksatker/010_UpdateTTD.php [L]
+#cetak hasil satker
+RewriteRule ^pksatker-([cetakPK]+)$ pdf/main/cetakpk.php [L]
+#get verif
+RewriteRule ^pksatker-([DataVerif]+)$ main/pksatker/011_get_data_verif.php [L]
+#update verif
+RewriteRule ^pksatker-([VerifUpdate]+)$ main/pksatker/012_UpdateVerifikasi.php [L]
+#ajukan verif
+RewriteRule ^pksatker-([AjukanVerif]+)$ main/pksatker/013_AjukanVerifikasi.php [L]
+#ajukan verif ke irwa
+RewriteRule ^pksatker-([AjukanKeIrwaVerif]+)$ main/pksatker/014_AjukanVerifikasikeIrwa.php [L]
+#ajukan verif ke supan
+RewriteRule ^pksatker-([AjukanKeSupanVerif]+)$ main/pksatker/015_AjukanVerifikasikeSupan.php [L]
+#PK Satker END
+
+#PK Satker AKHIR
+#get
+RewriteRule ^pksatkerakhir-([GetData]+)$ main/pksatkerakhir/001_get_pksatker.php [L]
+#get
+RewriteRule ^pksatkerakhir-([GetBaseline]+)$ main/pksatkerakhir/002_get_data_pksatker.php [L]
+#update
+RewriteRule ^pksatkerakhir-([Update]+)$ main/pksatkerakhir/003_Update_pksatker.php [L]
+#get emon
+RewriteRule ^pksatkerakhir-([GetEmon]+)$ main/pksatkerakhir/004_get_data_emon.php [L]
+#tagging emon
+RewriteRule ^pksatkerakhir-([TaggingEmon]+)$ main/pksatkerakhir/005_TaggingEmon.php [L]
+#delete tagging emon
+RewriteRule ^pksatkerakhir-([DeleteTagging]+)$ main/pksatkerakhir/007_Delete_tanggingemon.php [L]
+#delete tagging emon multi
+RewriteRule ^pksatkerakhir-([HapusMultiTagging]+)$ main/pksatkerakhir/007a_Delete_multitagemon.php [L]
+#update lokasi lat long tagging emon
+RewriteRule ^pksatkerakhir-([LatLongUpdate]+)$ main/pksatkerakhir/008_UpdateLatLongEmon.php [L]
+#update lokasi lat long tagging emon Persen
+RewriteRule ^pksatkerakhirpersen-([LatLongUpdate]+)$ main/pksatkerakhir/008a_UpdateLatLongEmon.php [L]
+
+#get ttd
+RewriteRule ^pksatkerakhir-([GetTTD]+)$ main/pksatkerakhir/009_get_ttd.php [L]
+#update ttd
+RewriteRule ^pksatkerakhir-([SimpanTTD]+)$ main/pksatkerakhir/010_UpdateTTD.php [L]
+#cetak hasil satker
+RewriteRule ^pksatkerakhir-([cetakPK]+)$ pdf/main/cetakpkakhir.php [L]
+#get verif
+RewriteRule ^pksatkerakhir-([DataVerif]+)$ main/pksatkerakhir/011_get_data_verif.php [L]
+#update verif
+RewriteRule ^pksatkerakhir-([VerifUpdate]+)$ main/pksatkerakhir/012_UpdateVerifikasi.php [L]
+#ajukan verif
+RewriteRule ^pksatkerakhir-([AjukanVerif]+)$ main/pksatkerakhir/013_AjukanVerifikasi.php [L]
+#ajukan verif ke irwa
+RewriteRule ^pksatkerakhir-([AjukanKeIrwaVerif]+)$ main/pksatkerakhir/014_AjukanVerifikasikeIrwa.php [L]
+#ajukan verif ke supan
+RewriteRule ^pksatkerakhir-([AjukanKeSupanVerif]+)$ main/pksatkerakhir/015_AjukanVerifikasikeSupan.php [L]
+#PK Satker AKHIR END
+
+#PK Balai AWAL
+#get
+RewriteRule ^pkbalaiawal-([GetData]+)$ main/pkbalaiawal/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkbalaiawal-([GetTTD]+)$ main/pkbalaiawal/002_get_ttd.php [L]
+#get
+RewriteRule ^pkbalaiawal-([GetBaseline]+)$ main/pkbalaiawal/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkbalaiawalhitungan-([GetBaseline]+)$ main/pkbalaiawal/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkbalaiawal-([cetakPK]+)$ pdf/main/cetakpkbalaiawal.php [L]
+#update
+RewriteRule ^pkbalaiawal-([Update]+)$ main/pkbalaiawal/004_Update_pkbalai.php [L]
+#PK Balai AWAL END
+
+#PK Balai
+#get
+RewriteRule ^pkbalai-([GetData]+)$ main/pkbalai/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkbalai-([GetTTD]+)$ main/pkbalai/002_get_ttd.php [L]
+#get
+RewriteRule ^pkbalai-([GetBaseline]+)$ main/pkbalai/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkbalaihitungan-([GetBaseline]+)$ main/pkbalai/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkbalai-([cetakPK]+)$ pdf/main/cetakpkbalai.php [L]
+#update
+RewriteRule ^pkbalai-([Update]+)$ main/pkbalai/004_Update_pkbalai.php [L]
+#PK Balai END
+
+#PK Balai AKHIR
+#get
+RewriteRule ^pkbalaiakhir-([GetData]+)$ main/pkbalaiakhir/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkbalaiakhir-([GetTTD]+)$ main/pkbalaiakhir/002_get_ttd.php [L]
+#get
+RewriteRule ^pkbalaiakhir-([GetBaseline]+)$ main/pkbalaiakhir/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkbalaiakhirhitungan-([GetBaseline]+)$ main/pkbalaiakhir/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkbalaiakhir-([cetakPK]+)$ pdf/main/cetakpkbalaiakhir.php [L]
+#update
+RewriteRule ^pkbalaiakhir-([Update]+)$ main/pkbalaiakhir/004_Update_pkbalai.php [L]
+#PK Balai AKHIR END
+
+
+#PK Dirjen Awal
+#get
+RewriteRule ^pkdirjenawal-([GetData]+)$ main/pkdirjenawal/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkdirjenawal-([GetTTD]+)$ main/pkdirjenawal/002_get_ttd.php [L]
+#get
+RewriteRule ^pkdirjenawal-([GetBaseline]+)$ main/pkdirjenawal/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkdirjenawalhitungan-([GetBaseline]+)$ main/pkdirjenawal/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkdirjenawal-([cetakPK]+)$ pdf/main/cetakpkdirjenawal.php [L]
+#update
+RewriteRule ^pkdirjenawal-([Update]+)$ main/pkdirjenawal/004_Update_pkbalai.php [L]
+#PK Dirjen Awal END
+
+#PK Dirjen
+#get
+RewriteRule ^pkdirjen-([GetData]+)$ main/pkdirjen/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkdirjen-([GetTTD]+)$ main/pkdirjen/002_get_ttd.php [L]
+#get
+RewriteRule ^pkdirjen-([GetBaseline]+)$ main/pkdirjen/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkdirjenhitungan-([GetBaseline]+)$ main/pkdirjen/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkdirjen-([cetakPK]+)$ pdf/main/cetakpkdirjen.php [L]
+#update
+RewriteRule ^pkdirjen-([Update]+)$ main/pkdirjen/004_Update_pkbalai.php [L]
+#PK Dirjen END
+
+#PK Dirjen Akhir
+#get
+RewriteRule ^pkdirjenakhir-([GetData]+)$ main/pkdirjenakhir/001_get_pkbalai.php [L]
+#get ttd
+RewriteRule ^pkdirjenakhir-([GetTTD]+)$ main/pkdirjenakhir/002_get_ttd.php [L]
+#get
+RewriteRule ^pkdirjenakhir-([GetBaseline]+)$ main/pkdirjenakhir/003_get_data_pkbalai.php [L]
+#get
+RewriteRule ^pkdirjenakhirhitungan-([GetBaseline]+)$ main/pkdirjenakhir/003_get_data_pkbalaihitungan.php [L]
+#cetak hasil balai
+RewriteRule ^pkdirjenakhir-([cetakPK]+)$ pdf/main/cetakpkdirjenakhir.php [L]
+#update
+RewriteRule ^pkdirjenakhir-([Update]+)$ main/pkdirjenakhir/004_Update_pkbalai.php [L]
+#PK Dirjen Akhir END
+
+#Notifikasi
+#senua
+RewriteRule ^notif-([All]+)$ main/notifikasipk/000_get_semuapesan.php [L]
+#get
+RewriteRule ^notif-([GetData]+)$ main/notifikasipk/001_get_notif.php [L]
+#update
+RewriteRule ^notif-([Update]+)$ main/notifikasipk/002_update_notif.php [L]
+
+#Progres Emon
+#tanggal emon
+RewriteRule ^tanggal_emon-([GetData]+)$ main/progres_emon/000_get_tanggal_emon.php [L]
+#tahun emon
+RewriteRule ^tahun_emon-([GetData]+)$ main/progres_emon/000_get_tahun_emon.php [L]
+#get all Progres Emon
+RewriteRule ^progres_emon-([All]+)$ main/progres_emon/004_get_progres_emon_all.php [L]
+#get Balai SDA
+RewriteRule ^progres_emon-([GetBalaiSDA]+)$ main/progres_emon/002_get_progres_balai.php [L]
+#get Satker SDA
+RewriteRule ^progres_emon-([GetSatkerSDA]+)$ main/progres_emon/003_get_progres_satker.php [L]
+#get detail Progres Emon
+RewriteRule ^detailprogres_emon-([GetData]+)$ main/progres_emon/001_get_progres_emon.php [L]
+#insert detail Progres Emon
+RewriteRule ^detailprogres_emon-([Insert]+)$ main/progres_emon/005_insert_progres_emon_all.php [L]
+#get detail Progres Emon New
+RewriteRule ^detailprogresemon-([GetData]+)$ main/progres_emon/006_get_progres_emon_new.php [L]
+#get Satker Progres Emon New
+RewriteRule ^progressatkeremon-([GetData]+)$ main/progres_emon/007_get_progres_satker_new.php [L]
+
+#Kontraktual Emon
+#get cek detail kontraktual
+RewriteRule ^cek_emon-([Kontraktual]+)$ main/kontraktual_emon/000_cek_paket_detail.php [L]
+#get cek Jumlah kontraktual
+RewriteRule ^cek_emon-([Jumlah]+)$ main/kontraktual_emon/000_cek_paket_jumlah.php [L]
+#get Balai SDA
+RewriteRule ^kontraktual_emon-([GetBalaiSDA]+)$ main/kontraktual_emon/001_get_paket_balai.php [L]
+#get Satker SDA
+RewriteRule ^kontraktual_emon-([GetSatkerSDA]+)$ main/kontraktual_emon/002_get_paket_satker.php [L]
+#get Detail Paket
+RewriteRule ^kontraktual_emon-([GetPaket]+)$ main/kontraktual_emon/003_get_paket_emon.php [L]
+
+##Layer Peta
+#get
+RewriteRule ^parastapainnovation_adminpeta-([GetLayerPeta]+)$ main/layerpeta/001_GetLayerPeta.php [L]
+#add
+RewriteRule ^parastapainnovation_adminpeta-([AddLayerPeta]+)$ main/layerpeta/002_AddLayerPeta.php
+#delete
+RewriteRule ^parastapainnovation_adminpeta-([DeleteLayerPeta]+)$ main/layerpeta/003_DeleteLayerPeta.php
+#update
+RewriteRule ^parastapainnovation_adminpeta-([UpdateLayerPeta]+)$ main/layerpeta/004_UpdateLayerPeta.php
+#update legenda peta
+RewriteRule ^parastapainnovation_adminpeta-([SettingLegendaPeta]+)$ main/layerpeta/011_UpdateLegendaPeta.php
+#getjenismenu
+RewriteRule ^parastapainnovation_adminpeta-([GetJenisMenu]+)$ main/layerpeta/005_GetJenisMenuLayerPeta.php [L]
+#getasalpeta
+RewriteRule ^parastapainnovation_adminpeta-([GetAsalPeta]+)$ main/layerpeta/006_GetAsalPeta.php [L]
+#getapipeta
+RewriteRule ^parastapainnovation_adminpeta-([GetAPIPeta]+)$ main/layerpeta/007_GetAPIPeta.php [L]
+#gettipepeta
+RewriteRule ^parastapainnovation_adminpeta-([GetTipePeta]+)$ main/layerpeta/008_GetTipePeta.php [L]
+#gettipepolygon
+RewriteRule ^parastapainnovation_adminpeta-([GetPolygonTipe]+)$ main/layerpeta/009_GetTipePolygon.php [L]
+#getfillpolygon
+RewriteRule ^parastapainnovation_adminpeta-([GetPolygonFill]+)$ main/layerpeta/010_GetFillPolygon.php [L]
+##Layer Peta End
+
+##MONITORING
+#PK
+RewriteRule ^parastapainnovationmonitoring-([PK]+)$ main/monitoring/000_get_pk_satker_all.php [L]
+
+RewriteRule \.(htm|html|jpg|png|gif|jpeg|geojson|jpg)$ - [F,L]
+
+Options All -Indexes
+
+
+Options All -Indexes

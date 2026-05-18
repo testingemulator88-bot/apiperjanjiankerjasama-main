@@ -1,0 +1,28 @@
+[12-Oct-2025 21:07:21 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.29. in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php:26
+Stack trace:
+#0 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/autoload_real.php(25): require()
+#1 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/autoload.php(22): ComposerAutoloaderInit175f515b2811e085f3258b59792b25af::getLoader()
+#2 /home/pars9694/public_html/apiperjanjiankerjasama/api/main/lke/penilaian_lke/010_exportExcelLKE.php(2): require('/home/pars9694/...')
+#3 {main}
+  thrown in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php on line 26
+[12-Oct-2025 21:13:26 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.29. in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php:26
+Stack trace:
+#0 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/autoload_real.php(25): require()
+#1 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/autoload.php(22): ComposerAutoloaderInit175f515b2811e085f3258b59792b25af::getLoader()
+#2 /home/pars9694/public_html/apiperjanjiankerjasama/api/main/lke/penilaian_lke/012_exportWordBAPusat.php(2): require('/home/pars9694/...')
+#3 {main}
+  thrown in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php on line 26
+[12-Oct-2025 22:01:54 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.29. in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php:26
+Stack trace:
+#0 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/autoload_real.php(25): require()
+#1 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/autoload.php(22): ComposerAutoloaderInit175f515b2811e085f3258b59792b25af::getLoader()
+#2 /home/pars9694/public_html/apiperjanjiankerjasama/api/main/lke/penilaian_lke/013_exportExcelLKEPusat.php(2): require('/home/pars9694/...')
+#3 {main}
+  thrown in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php on line 26
+[12-Oct-2025 22:25:10 Asia/Jakarta] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.3.0". You are running 8.2.29. in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php:26
+Stack trace:
+#0 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/autoload_real.php(25): require()
+#1 /home/pars9694/public_html/apiperjanjiankerjasama/vendor/autoload.php(22): ComposerAutoloaderInit175f515b2811e085f3258b59792b25af::getLoader()
+#2 /home/pars9694/public_html/apiperjanjiankerjasama/api/main/lke/penilaian_lke/013_exportExcelLKEPusat.php(2): require('/home/pars9694/...')
+#3 {main}
+  thrown in /home/pars9694/public_html/apiperjanjiankerjasama/vendor/composer/platform_check.php on line 26

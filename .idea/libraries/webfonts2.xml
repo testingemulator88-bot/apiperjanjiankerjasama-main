@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="webfonts2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/api/2025/main/FilesUpload/webfonts.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
