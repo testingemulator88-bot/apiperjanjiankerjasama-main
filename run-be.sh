@@ -15,7 +15,7 @@ case "${MODE}" in
     ;;
   *)
     echo "[ERROR] Unknown mode: ${MODE}" >&2
-    echo "Usage: ./run.sh [local|prod]" >&2
+    echo "Usage: ./run-be.sh [local|prod]" >&2
     exit 1
     ;;
 esac
@@ -34,4 +34,7 @@ echo "[API] Mode: ${MODE}"
 echo "[API] Starting at http://${HOST}:${PORT}"
 echo "[API] Root: ${API_DIR}"
 cd "${API_DIR}"
+if [ -f "${API_DIR}/router.php" ]; then
+  exec php -S "${HOST}:${PORT}" router.php
+fi
 exec php -S "${HOST}:${PORT}"

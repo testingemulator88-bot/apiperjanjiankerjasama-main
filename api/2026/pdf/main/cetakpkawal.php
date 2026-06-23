@@ -3,6 +3,7 @@ error_reporting(0);
 set_time_limit(-1);
 session_start();
 include '../../library/config.php';
+include 'pk_narrative_helper.php';
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 //check_login();
 
@@ -953,6 +954,8 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $currentY = $pdf->GetY();
 $pdf->SetY($currentY - 5);
 $myArray = array();
+$lampiran1RowsHtml = '';
+$lampiran1Narratives = array();
 // IKSK
 $sql = "select a.id,a.tahun,a.id_parent,a.kdunor,b.nama_kategori as nama_unor,a.urutlevel,a.level
 ,a.kode,a.kode_unique,IF(a.level = 'UNOR', b.nama_kategori, a.nama) as textindikator
@@ -1327,12 +1330,12 @@ if ($num > 0) {
 								$currentY = $pdf->GetY();
 								$pdf->SetY($currentY - 5);
 								$html = '
-								<table border="1"  cellpadding="2" style="width:100%;" >
-								<tr>
-								<td align="justify" width="1000px">
-								<b>PROGRAM: ' . $rowlevelSASARANPROGRAM['textindikator'] . '</b>
-								</td>
-								</tr>
+							<table border="1"  cellpadding="2" style="width:100%;" >
+							<tr>
+							<td align="justify" width="1000px">
+							<b>PROGRAM: ' . $rowlevelSASARANPROGRAM['textindikator'] . '</b>
+							</td>
+							</tr>
 								</table>
 								';
 								$pdf->writeHTML($html, true, false, true, false, '');
@@ -1341,12 +1344,12 @@ if ($num > 0) {
 								$currentY = $pdf->GetY();
 							} else {
 								$html = '
-								<table border="1"  cellpadding="2" style="width:100%;" >
-								<tr>
-								<td align="justify" width="1000px">
-								<b>PROGRAM: ' . $rowlevelSASARANPROGRAM['textindikator'] . '</b>
-								</td>
-								</tr>
+							<table border="1"  cellpadding="2" style="width:100%;" >
+							<tr>
+							<td align="justify" width="1000px">
+							<b>PROGRAM: ' . $rowlevelSASARANPROGRAM['textindikator'] . '</b>
+							</td>
+							</tr>
 								</table>
 								';
 								$pdf->writeHTML($html, true, false, true, false, '');
@@ -1451,8 +1454,15 @@ if ($num > 0) {
 
 			if ((float) $row['terpilih'] == 0) {
 				array_push($myArrayIKU, $row['kode_unique']);
-				$html = '
-				<table border="1"  cellpadding="2" style="width:100%;" >
+				$narasi_target = build_pk_target_narrative(
+					$rowlevelSASARANPROGRAM['textindikator'],
+					$rowlevelISPSK['textindikator'],
+					$row['textindikator'],
+					$target,
+					$row['namasatuan'],
+					$tahunsekarang
+				);
+				$lampiran1RowsHtml .= '
 				<tr>
 				<td align="justify" width="800px">
 				' . $row['textindikator'] . '
@@ -1461,12 +1471,8 @@ if ($num > 0) {
 				' . $target . ' ' . $row['namasatuan'] . '
 				</td>
 				</tr>
-				</table>
 				';
-				$pdf->writeHTML($html, true, false, true, false, '');
-				$currentY = $pdf->GetY();
-				$pdf->SetY($currentY - 4.7);
-				$currentY = $pdf->GetY();
+				$lampiran1Narratives[] = $narasi_target;
 
 				$myArray[] = (object)
 				[
@@ -1502,6 +1508,23 @@ if ($num > 0) {
 			}
 		}
 	}
+}
+
+if ($lampiran1RowsHtml !== '') {
+	$html = '
+	<table border="1"  cellpadding="2" style="width:100%;" >
+	' . $lampiran1RowsHtml . '
+	<tr>
+	<td align="justify" colspan="2" width="1000px">
+	' . implode('<br><br>', $lampiran1Narratives) . '
+	</td>
+	</tr>
+	</table>
+	';
+	$pdf->writeHTML($html, true, false, true, false, '');
+	$currentY = $pdf->GetY();
+	$pdf->SetY($currentY - 4.7);
+	$currentY = $pdf->GetY();
 }
 
 $currentY = $pdf->GetY();

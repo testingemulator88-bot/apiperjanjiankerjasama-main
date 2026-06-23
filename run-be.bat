@@ -16,7 +16,7 @@ if /I "%MODE%"=="local" (
   set "API_DIR=%ROOT_DIR%api"
 ) else (
   echo [ERROR] Unknown mode: %MODE%
-  echo Usage: run.bat [local^|prod]
+  echo Usage: run-be.bat [local^|prod]
   exit /b 1
 )
 
@@ -35,7 +35,11 @@ echo [API] Mode: %MODE%
 echo [API] Starting at http://%HOST%:%PORT%
 echo [API] Root: %API_DIR%
 pushd "%API_DIR%" >nul
-php -S %HOST%:%PORT%
+if exist "%API_DIR%\router.php" (
+  php -S %HOST%:%PORT% router.php
+) else (
+  php -S %HOST%:%PORT%
+)
 set "EXIT_CODE=%ERRORLEVEL%"
 popd >nul
 exit /b %EXIT_CODE%
